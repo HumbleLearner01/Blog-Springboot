@@ -16,13 +16,13 @@ public class MainController {
     @GetMapping("/user")
     public String login(Model model) {
         model.addAttribute("title", "Login");
-        return "user/logIn";
+        return "user/login";
     }
 
     @GetMapping("/signup")
     public String signup(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("title", "Signup!");
-        return "user/signUp";
+        return "user/signup";
     }
 }
