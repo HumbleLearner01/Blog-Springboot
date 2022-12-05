@@ -13,7 +13,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("title", "Login");
         return "user/login";
