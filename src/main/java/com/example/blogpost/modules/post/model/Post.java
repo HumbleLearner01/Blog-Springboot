@@ -4,6 +4,8 @@ import com.example.blogpost.modules.user.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -23,8 +25,8 @@ public class Post {
     private String body;
     private String imageCover;
 
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false) @CreationTimestamp
     private LocalDateTime createdAt;
-    @Column(name = "updated_at")
+    @Column(name = "updated_at") @UpdateTimestamp
     private LocalDateTime updatedAt;
 }
