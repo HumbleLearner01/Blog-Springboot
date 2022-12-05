@@ -5,7 +5,7 @@
 <body>
 <div th:replace="0fragment0/layout::header"></div>
 
-    <div class="d-flex flex-column justify-content-center h-100">
+    <div class="d-flex flex-column justify-content-center h-75">
         <div class="logIn col-md-5 col-10 rounded-3 p-5 box-shadow">
             <h2 class="text-uppercase text-light text-center fs-1">login</h2>
             <p class="text-secondary text-center">Please enter your username and password!</p>
@@ -16,7 +16,7 @@
     
             <div class="d-flex flex-column align-items-center mt-4 links">
                 <a href="#" class="text-secondary text-decoration-none">Forgot password ?</a>
-                <a href="signUp.html" class="text-secondary text-decoration-none mt-2">Don't have account? click here!</a>
+                <a th:href="@{/signup}" class="text-secondary text-decoration-none mt-2">Don't have account? click here!</a>
             </div>
     
             <div class="submit-logIn">
