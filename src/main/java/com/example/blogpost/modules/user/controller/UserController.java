@@ -13,12 +13,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping("/home")
+    @GetMapping("/user/home")
     public String home(Model model) {
         return "user/user-home";
     }
