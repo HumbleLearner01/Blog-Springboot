@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +23,11 @@ public class Post {
     @JsonIgnore @ManyToOne
     private User user;
 
+    @NotBlank(message = "This field is required!") @Size(min = 2, message = "Title must be at least 3 characters")
     private String title;
+    @NotBlank(message = "This field is required!")
+    private String category;
+    @NotBlank(message = "This field is required!")
     private String body;
     private String imageCover;
 

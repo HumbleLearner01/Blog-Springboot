@@ -26,11 +26,6 @@ public class UserController {
         return "user/user-home";
     }
 
-    @GetMapping("/user/home")
-    public String home(Model model) {
-        return "user/user-home";
-    }
-
     @PostMapping("/register")
     public String registerUser(@Valid @ModelAttribute User user, BindingResult bindingResult,
                                @RequestParam(value = "agreements", defaultValue = "false") boolean agreements,

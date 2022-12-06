@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="0fragment0/layout::head">
+</head>
+<body>
+
+
+
+<div class="card mr-5">
+    <div class="card-body">
+        <h1 class="text-center">Add Contact</h1>
+        <div class="container-fluid mt-1">
+            <div class="row">
+                <div class="col-md-6 offset-md-5">
+                    <form th:action="@{/user/post/process-upload}" th:object="${post}" method="POST" enctype="multipart/form-data" class="mt-2">
+
+
+                        <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert" role="alert">
+                            <p th:text="${session.message.message}" class="text-center"></p>
+                            <p th:text="${#session.removeAttribute('message')}"></p>
+                        </div>
+
+                        <table>
+                            <tr>
+                                <td>Title :</td>
+                                <td>
+                                    <!--title-->
+                                    <div class="input-group ms-2">
+                                        <input type="text" id="title" name="title" placeholder=""
+                                               th:field="*{title}" th:value="${post.title}">
+                                        <div class="mt-2" style="color: red" th:each="e:${#fields.errors('title')}" th:text="${e}"></div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Category :</td>
+                                <td>
+                                    <!--category-->
+                                    <div class="input-group ms-2">
+                                        <input type="text" id="category" name="category" placeholder=""
+                                               th:field="*{category}" th:value="${post.category}">
+                                        <div class="mt-2" style="color: red" th:each="e:${#fields.errors('category')}" th:text="${e}"></div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Body : </td>
+                                <td>
+                                    <!--body-->
+                                    <div class="form-group mt-3 ms-2">
+                                        <textarea name="body" id="body" cols="23" rows="2" class="from-control" placeholder=""
+                                                  th:field="*{body}" th:value="${post.body}">
+                                        </textarea>
+                                        <div class="mt-2" style="color: red" th:each="e:${#fields.errors('body')}" th:text="${e}"></div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Img : </td>
+                                <td>
+                                    <!--image-->
+                                    <div class="custom-file mt-2 ms-2">
+                                        <input type="file" name="postImage" id="profileImage"/>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <!--submit button-->
+                                    <div class="container">
+                                        <button type="submit" class="btn btn-outline-info mt-3">Submit</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div th:replace="0fragment0/layout::script"></div>
+</body>
+</html>
