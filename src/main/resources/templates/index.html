@@ -3,74 +3,64 @@
 <head th:replace="0fragment0/layout::head">
 </head>
 <body>
-    <div th:replace="0fragment0/layout::header"></div>
+<div th:replace="0fragment0/layout::header"></div>
 
-    <main class="p-5">
-        <!-- Modal -->
-        <div class="modal fade" id="user-info" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content user-info-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5 text-light" id="staticBackdropLabel">User Info</h1>
-                        <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+<main class="p-5">
+    <!-- Modal -->
+    <div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+         id="user-info" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content user-info-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-light" id="staticBackdropLabel">User Info</h1>
+                    <button aria-label="Close" class="btn-close bg-light" data-bs-dismiss="modal"
+                            type="button"></button>
+                </div>
+                <div class="modal-body rounded-bottom ">
+                    <h4 class="text-center text-light mt-3">Name</h4>
+                    <p class="text-center h5 text-light">test@gmail.com</p>
+                    <form class="text-center mt-5 mb-3 d-flex flex-column">
+                        <div class="">
+                            <a class="rounded-pill login-sinup-btn" href="pages/userInfo.html">Complete your profile</a>
+                        </div>
+                        <a class="text-light text-decoration-none mt-3 logout-btn" href="#"><i
+                                class="bi bi-box-arrow-in-right"></i>
+                            Sign out</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="card text-white bg-dark mb-3 ms-4" style="max-width: 14rem;" th:each="post: ${posts}">
+                <a class="mt-2 text-decoration-none text-light" th:href="@{'/post/show-user-profile/'+${post.id}}">
+                    <div class="card-header text-uppercase" th:text="'👉 '+${post.user.getName()}"></div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${post.getTitle()}"></h5>
+                    <img alt="" class="card-img-top img" th:src="@{'/img/'+${post.getImageCover()}}" style="height: 150px; width: 150px; text-align: center">
+                    <div class="mt-2">
+                        <i class="card-text" th:text="${post.getBody()}"></i>
                     </div>
-                    <div class="modal-body rounded-bottom ">
-                        <h4 class="text-center text-light mt-3">Name</h4>
-                        <p class="text-center h5 text-light">test@gmail.com</p>
-                        <form class="text-center mt-5 mb-3 d-flex flex-column">
-                            <div class="">
-                                <a class="rounded-pill login-sinup-btn" href="pages/userInfo.html">Complete your profile</a>
-                            </div>
-                            <a href="#" class="text-light text-decoration-none mt-3 logout-btn"><i class="bi bi-box-arrow-in-right"></i>
-                                Sign out</a>
-                        </form>
+                </div>
+                <div class="p-1">
+                    <div class="card-footer">
+                        <p class="small text-muted m-0 p-0">Last Update : </p>
+                        <p class="small text-muted m-0 p-0"
+                           th:text="${#temporals.format(post.getUpdatedAt(),'yyyy/mm/dd -HH:mm')}"></p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- paragraph -->
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum assumenda mollitia quasi perferendis, minima
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p><p>
-            explicabo! Commodi modi tenetur distinctio est. Placeat, aperiam ducimus eligendi alias nemo culpa facere
-            cumque! Quas aut blanditiis dignissimos consectetur totam illo nulla ab, excepturi repudiandae impedit
-            expedita a voluptas similique optio voluptatem cum. Dolorum, expedita?
-        </p>
-    </main>
 
-    <div th:replace="0fragment0/layout::footer"></div>
-    <div th:replace="0fragment0/layout::script"></div>
+</main>
+
+<div th:replace="0fragment0/layout::footer"></div>
+<div th:replace="0fragment0/layout::script"></div>
 </body>
 
 </html>

@@ -53,9 +53,10 @@ public class PostController {
                 System.out.println("image empty");
                 post.setImageCover("no-image.png");
             } else {
-                post.setImageCover(multipart.getOriginalFilename());
+                UUID uuid = UUID.randomUUID();
+                post.setImageCover(uuid + multipart.getOriginalFilename());
                 File file = new ClassPathResource("static/img").getFile();
-                Path path = Paths.get(file.getAbsolutePath() + File.separator + UUID.randomUUID() + multipart.getOriginalFilename());
+                Path path = Paths.get(file.getAbsolutePath() + File.separator + uuid + multipart.getOriginalFilename());
                 Files.copy(multipart.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
             //mapping user and post
