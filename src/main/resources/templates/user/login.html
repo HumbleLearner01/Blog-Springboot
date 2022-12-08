@@ -11,6 +11,7 @@
 
             <div th:if="${param.error}" class="text-center text-uppercase mb-2" style="color: red">Invalid username or it doesn't exist</div>
             <div th:if="${param.logout}" class="alert alert-success">You have been logged out!</div>
+            <div th:if="${param.change}" class="alert alert-success" th:text="${param.change}"></div>
 
             <h2 class="text-uppercase text-light text-center fs-1">login</h2>
 
@@ -27,9 +28,8 @@
             </div>
 
             <div class="d-flex flex-column align-items-center mt-4 links">
-                <a href="#" class="text-secondary text-decoration-none">Forgot password ?</a>
-                <a th:href="@{/signup}" class="text-secondary text-decoration-none mt-2">Don't have account? click
-                    here!</a>
+                <a th:href="@{/forgot-password}" class="text-secondary text-decoration-none">Forgot password ?</a>
+                <a th:href="@{/signup}" class="text-secondary text-decoration-none mt-2">Don't have account? click here!</a>
             </div>
 
             <div class="submit-logIn">

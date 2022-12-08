@@ -4,6 +4,41 @@
 </head>
 <body>
 
+
+<div class="container text-center mt-5">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <h1>Posts that have been uploaded by "[[${user.name}]]"</h1>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="card text-white bg-dark mb-3 ms-4" style="max-width: 14rem;" th:each="pst: ${post}">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${pst.getTitle()}"></h5>
+                                <p class="small text-muted m-0 p-0"
+                                   th:text="'Post Created At : '+${#temporals.format(pst.getCreatedAt(),'dd/MM/YYYY')}"></p>
+                                <!--update-->
+                        <form class="text-decoration-none text-light" th:action="@{'/user/post/edit/'+${pst.id}}" method="POST">
+                                <button type="submit"><img alt="" class="card-img-top img mt-1 img-fluid img" style="height: 150px; width: 150px; text-align: center"
+                                             th:src="@{'/img/'+${pst.getImageCover()}}"></button>
+                        </form>
+                                <div class="mt-2">
+                                    <i class="card-text" th:text="${pst.getBody()}"></i>
+                                </div>
+                            </div>
+                            <div class="p-1">
+                                <div class="card-footer">
+                                    <p class="small text-muted m-0 p-0">Last Update : </p>
+                                    <p class="small text-muted m-0 p-0" th:text="${#temporals.format(pst.getUpdatedAt(),'dd/MM/YYYY-HH:mm')}"></p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div th:replace="0fragment0/layout::script"></div>
 </body>
 </html>
